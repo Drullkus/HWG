@@ -195,8 +195,14 @@ public class GunTableScreen extends AbstractContainerScreen<GunTableScreenHandle
         this.scrolling = false;
         var i = (this.width - this.imageWidth) / 2;
         var j = (this.height - this.imageHeight) / 2;
-        if (this.canScroll(this.menu.getRecipes().size()) && mouseX > (i + 94) && mouseX < (i + 94 + 6) && mouseY > (j + 18) && mouseY <= (j + 18 + 139 + 1))
-            this.scrolling = true;
+        if (mouseX > (i + 118 - 6)
+                && mouseX < (i + 118)
+                && mouseY > (j + 18)
+                && mouseY <= (j + 18 + 139 + 1)
+        ) {
+            if (this.canScroll(this.menu.getRecipes().size()))
+			    this.scrolling = true;
+		}
 
         return super.mouseClicked(mouseX, mouseY, button);
     }
