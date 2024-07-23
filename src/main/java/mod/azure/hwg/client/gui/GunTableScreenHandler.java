@@ -64,6 +64,7 @@ public class GunTableScreenHandler extends AbstractContainerMenu {
             if (optional.isPresent()) {
                 var craftingRecipe = optional.get();
                 itemStack = craftingRecipe.value().assemble(craftingInventory, level.registryAccess());
+                itemStack.setTag(craftingInventory.getItem(0).getOrCreateTag().copy());
             }
 
             craftingInventory.setItem(5, itemStack);
