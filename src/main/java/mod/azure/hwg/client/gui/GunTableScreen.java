@@ -22,6 +22,7 @@ import java.util.List;
 
 public class GunTableScreen extends AbstractContainerScreen<GunTableScreenHandler> {
     private static final ResourceLocation TEXTURE = HWGMod.modResource("textures/gui/gun_table_gui.png");
+    private static final ResourceLocation TRADE_ARROW_SPRITE = new ResourceLocation("container/villager/trade_arrow");
     private final GunTableScreen.WidgetButtonPage[] offers = new GunTableScreen.WidgetButtonPage[7];
     private int selectedIndex;
     private int indexStartOffset;
@@ -114,7 +115,9 @@ public class GunTableScreen extends AbstractContainerScreen<GunTableScreenHandle
                         int n = yPos + 2;
                         this.renderIngredients(matrices, gunTableRecipe, xPos, n);
 
-                        this.renderArrow(matrices, gunTableRecipe, i + 22, n);
+                        RenderSystem.enableBlend();
+                        matrices.blitSprite(TRADE_ARROW_SPRITE, i + 22 + 56, n + 3, 0, 10, 9);
+
                         matrices.renderFakeItem(output, i + 24 + 68, n);
                         matrices.renderItemDecorations(this.font, output, i + 24 + 68, n);
                         yPos += 20;
@@ -141,7 +144,6 @@ public class GunTableScreen extends AbstractContainerScreen<GunTableScreenHandle
         RenderSystem.enableBlend();
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, TEXTURE);
-
     }
 
     private void renderIngredients(GuiGraphics matrices, GunTableRecipe gunTableRecipe, int x, int y) {

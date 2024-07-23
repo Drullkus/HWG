@@ -42,10 +42,10 @@ public class GunRender<T extends Item & GeoItem> extends GeoItemRenderer<T> {
             VertexConsumer buffer = ItemRenderer.getFoilBufferDirect(bufferSource, renderType, true, this.currentItemStack != null && this.currentItemStack.hasFoil());
 
             poseStack.pushPose();
-            Lighting.setupFor3DItems(); //Lighting.setupForFlatItems();
+            //Lighting.setupFor3DItems(); //Lighting.setupForFlatItems();
             this.defaultRender(poseStack, this.animatable, defaultBufferSource, renderType, buffer, 0, Minecraft.getInstance().getFrameTime(), packedLight);
-            defaultBufferSource.endBatch();
-            RenderSystem.enableDepthTest();
+            //defaultBufferSource.endBatch();
+            //RenderSystem.enableDepthTest();
             //Lighting.setupFor3DItems();
             poseStack.popPose();
         }
