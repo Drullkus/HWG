@@ -66,8 +66,10 @@ public class GunTableScreenHandler extends AbstractContainerMenu {
                 var craftingRecipe = optional.get();
                 itemStack = craftingRecipe.value().assemble(craftingInventory, level.registryAccess());
 
-                if (itemStack.getItem() instanceof AzureAnimatedGunItem && itemStack.hasTag())
-                    itemStack.setTag(craftingInventory.getItem(0).getTag().copy());
+                ItemStack firstIngredient = craftingInventory.getItem(0);
+                if (itemStack.getItem() instanceof AzureAnimatedGunItem && firstIngredient.hasTag()) {
+                    itemStack.setTag(firstIngredient.getTag().copy());
+                }
             }
 
             craftingInventory.setItem(5, itemStack);
