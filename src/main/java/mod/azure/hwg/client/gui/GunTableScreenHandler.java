@@ -1,7 +1,7 @@
 package mod.azure.hwg.client.gui;
 
-import mod.azure.azurelib.common.api.common.items.AzureBaseGunItem;
 import mod.azure.hwg.HWGMod;
+import mod.azure.hwg.item.weapons.AzureAnimatedGunItem;
 import mod.azure.hwg.mixin.IngredientAccess;
 import mod.azure.hwg.util.recipes.GunTableRecipe;
 import mod.azure.hwg.util.registry.HWGBlocks;
@@ -66,7 +66,7 @@ public class GunTableScreenHandler extends AbstractContainerMenu {
                 var craftingRecipe = optional.get();
                 itemStack = craftingRecipe.value().assemble(craftingInventory, level.registryAccess());
 
-                if (itemStack.getItem() instanceof AzureBaseGunItem && itemStack.hasTag())
+                if (itemStack.getItem() instanceof AzureAnimatedGunItem && itemStack.hasTag())
                     itemStack.setTag(craftingInventory.getItem(0).getTag().copy());
             }
 
